@@ -16,7 +16,7 @@ class Lift:
             if self.floors:
                 self.floor = self.floors.pop(self.closest_floor())
             else:
-                self.floor = random.randint(self.num_floors)
+                self.floor = random.randint(0, self.num_floors)
 
     def requested_floor(self, floor):
         self.floors.append(floor)
