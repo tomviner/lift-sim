@@ -13,10 +13,10 @@ class Display:
         floors = range(self.position, floor + step, step)
         for i in floors:
             # print(i)
-            self.draw(i)
-            self.position =i
+            self.draw(i, floor)
+            self.position = i
 
-    def draw(self, floor):
+    def draw(self, floor, target):
         """
         ___________________
         |                 |
@@ -40,10 +40,13 @@ class Display:
         ground = '___________________'
         empty_floor = '|                 |'
         full_floor = '|   ||            |'
+        target_floor = '|   ||  ding!     |'
 
         print(roof)
         for j in range(self.floors, -1, -1):
-            if j == floor:
+            if j == target:
+                print(target_floor, j)
+            elif j == floor:
                 print(full_floor, j)
             else:
                 print(empty_floor, j)
