@@ -1,7 +1,7 @@
 import random
 
 
-class Lift():
+class Lift:
 
     def __init__(self, display):
         self.num_floors = display.floors
@@ -14,9 +14,9 @@ class Lift():
         while 1:
             yield self.floor
             if self.floors:
-                self.floor = self.floors.pop(0)
+                self.floor = self.floors.pop(self.closest_floor())
             else:
-                self.floor = random.randint(self.num_floors)
+                self.floor = random.randint(0, self.num_floors)
 
     def requested_floor(self, floor):
         self.floors.append(floor)
@@ -25,5 +25,12 @@ class Lift():
         for floor in self.next_floor():
             self.display.send_lift_to(floor)
 
-    def closest_floor:
-        pass
+    def closest_floor(self):
+        return sorted(self.floors, key=self.sort_key)[0]
+
+    def sort_key(self, next_floor):
+        if next_floor < self.floor and self.going_up:
+            next_floor -= self.num_floors
+        elif next_floor > self.floor and not self.going_up:
+            next_floor += self.num_floors
+        return abs(self.floor - next_floor)

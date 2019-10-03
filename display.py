@@ -1,6 +1,7 @@
 import time
 import os
 
+
 class Display:
     def __init__(self, floors, lifts):
         self.floors = floors
