@@ -42,17 +42,20 @@ class Display:
         full_floor = '|   ||            |'
         target_floor = '|   ||  ding!     |'
 
+        sleep_time = 0.2
+
         print(roof)
         for j in range(self.floors, -1, -1):
             if j == target and j == floor:
                 print(target_floor, j)
+                sleep_time += 0.4
             elif j == floor:
                 print(full_floor, j)
             else:
                 print(empty_floor, j)
 
         print(ground)
-        time.sleep(0.2)
+        time.sleep(sleep_time)
 
 
 if __name__ == "__main__":
