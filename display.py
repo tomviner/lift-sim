@@ -44,7 +44,7 @@ class Display:
 
         print(roof)
         for j in range(self.floors, -1, -1):
-            if j == target:
+            if j == target and j == floor:
                 print(target_floor, j)
             elif j == floor:
                 print(full_floor, j)
